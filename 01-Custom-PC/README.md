@@ -4,21 +4,21 @@ My interest in building a custom PC started because I was dissatisfied with cons
 
 At the time, I had little to no knowledge about PC hardware or how to build a computer. Instead of buying a prebuilt system, I decided to learn how to build one myself. I spent about a year researching components, comparing parts, watching build guides, and learning how everything worked together.
 
-I also decided to go big with my first build and choose higher-end components that would give me room to upgrade and keep the system relevant for years. Rather than stopping at a standard air- or AIO-cooled build, I challenged myself to install a full custom water-cooling loop on my very first PC.
+I also decided to go big with my first PC and choose higher-end components that would give me room to upgrade and keep the system relevant for years. Rather than stopping at a standard air- or AIO-cooled setup, I challenged myself to install a full custom water-cooling loop on my very first PC.
 
 In 2023, I completed the build successfully. Since then, I have continued upgrading, maintaining, and troubleshooting the system, which has helped me gain hands-on experience with computer hardware, cooling, system configuration, performance, and problem-solving.
 
 <p align="center">
-  <img width="60%" alt="Original PC Build" src="https://github.com/user-attachments/assets/7b27f50d-fe16-443a-9dbd-58c4b690e003" />
+  <img width="60%" alt="Original PC" src="https://github.com/user-attachments/assets/7b27f50d-fe16-443a-9dbd-58c4b690e003" />
 </p>
 
 <p align="center">
-  <em>My completed first custom PC build in 2023.</em>
+  <em>My completed first custom PC in 2023.</em>
 </p>
 
-## Build Specifications
+## Specifications
 
-### Original Build Specifications
+### Original System Specifications
 
 - **CPU:** Intel Core i9-13900K
 - **GPU:** NVIDIA GeForce RTX 4080 Founders Edition
@@ -31,7 +31,7 @@ In 2023, I completed the build successfully. Since then, I have continued upgrad
 - **Networking:** 2.5GbE + Wi-Fi 6E
 - **Operating System:** Windows 11 Home
 
-> Current build photo coming soon.
+> Current system photo coming soon.
 
 ### Current System Specifications
 
@@ -48,9 +48,9 @@ In 2023, I completed the build successfully. Since then, I have continued upgrad
 
 ## Custom Water-Cooling Loop
 
-One of the biggest challenges I took on with my first PC build was installing a full custom water-cooling loop. Since I had never built a PC before, this added another layer of difficulty to the project and required me to learn much more than basic component installation.
+One of the biggest challenges I took on with my first PC was installing a full custom water-cooling loop. Since I had never built a PC before, this added another layer of difficulty to the project and required me to learn much more than basic component installation.
 
-I researched how custom loops work, including pumps, reservoirs, radiators, tubing, fittings, coolant flow, leak testing, and maintenance. After planning the loop and choosing the components, I successfully assembled and tested the cooling system as part of my first build.
+I researched how custom loops work, including pumps, reservoirs, radiators, tubing, fittings, coolant flow, leak testing, and maintenance. After planning the loop and choosing the components, I successfully assembled and tested the cooling system as part of my first PC.
 
 Since completing the original loop, I have continued improving the cooling setup by upgrading the fans and fan-control system, pump/reservoir, CPU water block, tubing, and fittings. Maintaining the loop has also given me hands-on experience with draining and refilling the system, replacing components, checking connections, and troubleshooting cooling-related issues.
 
@@ -58,7 +58,7 @@ Since completing the original loop, I have continued improving the cooling setup
 
 ### Motherboard Upgrade
 
-I replaced my original MSI MAG Z690 Tomahawk with an NZXT N7 Z790 after finding a good deal on the board. I also preferred the cleaner design of the N7 and felt that it matched the overall aesthetics of my build better.
+I replaced my original MSI MAG Z690 Tomahawk with an NZXT N7 Z790 after finding a good deal on the board. I also preferred the cleaner design of the N7 and felt that it matched the overall aesthetics of my PC better.
 
 After installing the new motherboard, I updated the BIOS and went through the necessary system configuration to make sure the hardware was recognized and operating correctly.
 

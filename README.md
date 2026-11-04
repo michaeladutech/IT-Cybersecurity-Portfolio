@@ -1,6 +1,6 @@
 # Michael's IT/Cybersecurity Portfolio
 
-A collection of my personal IT projects as I work toward a career in networking and cybersecurity. Starting with my custom PC build and growing into homelab, virtualization, and security labs, with documentation of what I built, what broke, and how I fixed it.
+A collection of my personal IT projects as I work toward a career in networking and cybersecurity. Starting with my custom PC and growing into homelab, virtualization, and security labs, with documentation of what I built, what broke, and how I fixed it.
 
 ## About Me
 
@@ -14,7 +14,7 @@ My goal with this portfolio is to turn that interest into practical experience a
 
 | # | Project | Summary |
 |---|---|---|
-| 1 | [My Custom PC](01-Custom-PC-Build/) | Custom water-cooled PC build, upgrades, and hardware troubleshooting (CPU RMA, SSD, PSU cable, networking) |
+| 1 | [My Custom PC](01-Custom-PC/) | Custom water-cooled PC, upgrades, and hardware troubleshooting (CPU RMA, SSD, PSU cable, networking) |
 | 2 | [Personal Homelab](02-Homelab/) | *Coming Soon* |
 | 3 | [Active Directory & DNS Environment](03-Active-Directory-DNS-Environment/) | Active Directory and DNS fundamentals: domain controller, users and groups, and joining a computer to the domain |
 

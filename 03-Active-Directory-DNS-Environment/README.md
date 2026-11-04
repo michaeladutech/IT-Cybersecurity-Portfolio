@@ -83,7 +83,7 @@ These are some of the most common help desk tasks. Password resets happen when s
 
 ## Skills Practiced
 
-Active Directory, DNS, domain controllers, users and groups, security groups, Organizational Units (OUs), account management, password resets, domain join, static IP addressing, Windows Server 2025, Windows 11, Hyper-V, virtual machines, virtual networking
+Active Directory, domain controllers, DNS, Organizational Units (OUs), user and security group management, password resets, domain join, static IP addressing, Windows Server 2025, Windows 11, Hyper-V, virtual networking
 
 ---
 

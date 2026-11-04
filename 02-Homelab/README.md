@@ -2,7 +2,7 @@
 
 ### *Coming Soon*
 
-I'm planning a homelab to keep building my networking and cybersecurity skills. I'll start building and documenting it once I have the hardware.
+I'm planning a homelab to keep practicing my networking and cybersecurity skills. I'll start building and documenting it once I have the hardware.
 
 ---
 

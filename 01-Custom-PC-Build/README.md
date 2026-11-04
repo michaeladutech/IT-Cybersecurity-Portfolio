@@ -1,4 +1,4 @@
-# Project 1: My Custom Pc
+# Project 1: My Custom PC
 
 My interest in building a custom PC started because I was dissatisfied with console gaming and wanted more performance, flexibility, and a better overall experience.
 

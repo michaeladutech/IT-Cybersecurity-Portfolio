@@ -164,6 +164,16 @@ To be safe, I replaced the power supply before using the system again. After ins
 
 This experience taught me the importance of recognizing physical warning signs such as unusual smells, excessive heat, or discoloration during high-load testing. It also gave me more hands-on experience with diagnosing power-related hardware issues and responding cautiously when there is a risk of component damage.
 
+## Skills Practiced
+
+- **PC hardware:** choosing components, assembling a full system, and upgrading parts like the motherboard, storage, and case
+- **Custom water cooling:** planning and assembling a loop, leak testing, draining and refilling, and replacing components
+- **BIOS and firmware:** BIOS updates, default settings, and CPU power limits
+- **Hardware troubleshooting:** isolating issues, swapping known-good parts, and handling a warranty RMA
+- **Windows and storage:** fresh Windows installs, NVMe SSD boot drives, and repurposing drives
+- **Performance tuning:** GPU overclocking, stress testing, and monitoring temperatures and stability
+- **Networking hardware:** installing a 10GbE PCIe adapter, upgrading to Wi-Fi 7, drivers, and link-speed checks
+
 ---
 
 [← Back to portfolio](../README.md)

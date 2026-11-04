@@ -16,6 +16,10 @@ For this project, I built a small Windows domain on my own PC using Hyper-V to l
   <img width="60%" alt="Private virtual switch in Hyper-V" src="screenshots/01-private-switch.png" />
 </p>
 
+<p align="center">
+  <em>Private virtual switch used to keep the lab separate from my home network.</em>
+</p>
+
 ## Setting Up the Domain
 
 I gave the server a static IP, installed the Active Directory Domain Services and DNS roles, and promoted it to a domain controller for `kojo.lab`.
@@ -25,6 +29,10 @@ In a company, the domain controller is the central place where all user accounts
 <p align="center">
   <img width="49%" alt="Server roles installed" src="screenshots/03-server-roles.png" />
   <img width="49%" alt="Domain verified with whoami and systeminfo" src="screenshots/04-domain-verified.png" />
+</p>
+
+<p align="center">
+  <em>Server roles installed, and the domain confirmed with whoami and systeminfo.</em>
 </p>
 
 ## Users, Groups, and OUs
@@ -40,6 +48,10 @@ Groups are used to control access. Instead of giving permissions to each person 
   <img width="49%" alt="User group membership" src="screenshots/06-group-membership.png" />
 </p>
 
+<p align="center">
+  <em>OU structure and a user's group membership in Active Directory.</em>
+</p>
+
 ## DNS
 
 DNS was set up along with the domain controller.
@@ -50,6 +62,10 @@ That's why domain computers need to use the domain controller for DNS. It's the 
 
 <p align="center">
   <img width="60%" alt="DNS forward lookup zone" src="screenshots/07-dns-forward-zone.png" />
+</p>
+
+<p align="center">
+  <em>DNS forward lookup zone for kojo.lab.</em>
 </p>
 
 ## Joining a Computer to the Domain
@@ -63,6 +79,10 @@ Joining a computer to the domain connects it to Active Directory, so IT can mana
   <img width="49%" alt="Signed in as a domain user" src="screenshots/10-domain-user-login.png" />
 </p>
 
+<p align="center">
+  <em>The client finding kojo.lab with nslookup, and signed in as a domain user.</em>
+</p>
+
 ## Basic Account Management
 
 I practiced resetting passwords and enabling and disabling user accounts in Active Directory.
@@ -72,6 +92,10 @@ These are some of the most common help desk tasks. Password resets happen when s
 <p align="center">
   <img width="49%" alt="Disabled account message at login" src="screenshots/11-account-disabled.png" />
   <img width="49%" alt="Password reset in Active Directory" src="screenshots/12-password-reset.png" />
+</p>
+
+<p align="center">
+  <em>A disabled account at sign-in, and a password reset in Active Directory.</em>
 </p>
 
 ## What I Learned

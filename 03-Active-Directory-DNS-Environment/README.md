@@ -1,4 +1,4 @@
-# Project 3: Active Directory & DNS Lab
+# Project 3: Active Directory & DNS Environment
 
 For this project, I built a small Windows domain on my own PC using Hyper-V to learn the fundamentals of Active Directory and DNS.
 

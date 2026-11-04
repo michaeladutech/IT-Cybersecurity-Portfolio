@@ -1,123 +1,75 @@
 # Project 3: Virtualization Environment — Active Directory & DNS Lab
 
-For this project, I built a small Windows domain on my own PC using Hyper-V. I wanted hands-on practice with Active Directory and DNS, since they're used in almost every company and show up constantly in help desk work.
+For this project, I built a small Windows domain on my own PC using Hyper-V to learn the fundamentals of Active Directory and DNS.
 
 ## Lab Setup
 
 | Component | Details |
 |---|---|
-| Hypervisor | Hyper-V on my Windows 11 Pro PC |
-| Domain Controller | `DC01` — Windows Server 2025 |
-| Client | `WIN11-01` — Windows 11 Pro |
+| Hypervisor | Hyper-V |
+| Domain Controller | `DC01` — Windows Server 2025 (192.168.1.5) |
+| Client | `WIN11-01` — Windows 11 Pro (192.168.1.101) |
 | Domain | `kojo.lab` |
 | Network | Private virtual switch, separate from my home network |
-
-| Machine | IP Address | DNS Server |
-|---|---|---|
-| DC01 | 192.168.1.5 | Itself (127.0.0.1) |
-| WIN11-01 | 192.168.1.101 | DC01 (192.168.1.5) |
-
-## Building the Lab
-
-### Setting Up the Network
-
-I created a private virtual switch in Hyper-V so the lab VMs could talk to each other but stay isolated from my home network.
 
 <p align="center">
   <img width="60%" alt="Private virtual switch in Hyper-V" src="screenshots/01-private-switch.png" />
 </p>
 
-On the private switch, the server first got a `169.254.x.x` address because there was no DHCP server to give it one. Domain controllers should have an address that doesn't change, so I gave it a static IP of `192.168.1.5`.
+## Setting Up the Domain
 
-<p align="center">
-  <img width="60%" alt="DC01 with a 169.254 APIPA address" src="screenshots/02-dc01-apipa-address.png" />
-</p>
-
-### Creating the Domain
-
-I installed the Active Directory Domain Services and DNS roles on the server, then promoted it to a domain controller for a new domain called `kojo.lab`. I confirmed it worked with `whoami` and `systeminfo`.
+I gave the server a static IP, installed the Active Directory Domain Services and DNS roles, and promoted it to a domain controller for `kojo.lab`.
 
 <p align="center">
   <img width="49%" alt="Server roles installed" src="screenshots/03-server-roles.png" />
   <img width="49%" alt="Domain verified with whoami and systeminfo" src="screenshots/04-domain-verified.png" />
 </p>
 
-### Users, Groups, and OUs
+## Users, Groups, and OUs
 
-I set up Organizational Units (OUs) to organize accounts like a small company would: **Employees**, **Management**, **IT Staff**, and **Groups**. Then I created user accounts and security groups, and added users to the groups that matched their roles.
+I created Organizational Units (OUs) to organize accounts, then added users and security groups.
 
 <p align="center">
   <img width="49%" alt="OU structure in Active Directory Users and Computers" src="screenshots/05-ou-structure.png" />
   <img width="49%" alt="User group membership" src="screenshots/06-group-membership.png" />
 </p>
 
-### DNS
+## DNS
 
-DNS was set up automatically when the server became a domain controller. I looked through the records to see how computers on the domain are listed by name and IP address. I also created a reverse lookup zone so DNS works both ways (name to IP and IP to name).
+DNS was set up along with the domain controller. Computers on the domain use it to find the domain controller.
 
 <p align="center">
-  <img width="49%" alt="DNS forward lookup zone" src="screenshots/07-dns-forward-zone.png" />
-  <img width="49%" alt="DNS reverse lookup zone" src="screenshots/08-dns-reverse-zone.png" />
+  <img width="60%" alt="DNS forward lookup zone" src="screenshots/07-dns-forward-zone.png" />
 </p>
 
-### Joining the Client to the Domain
+## Joining a Computer to the Domain
 
-On the Windows 11 VM, I set a static IP and pointed its DNS to the domain controller. I tested it with `nslookup`, joined the computer to `kojo.lab`, and signed in as a domain user.
+I pointed the Windows 11 VM's DNS to the domain controller, tested it with `nslookup`, joined it to `kojo.lab`, and signed in as a domain user.
 
 <p align="center">
   <img width="49%" alt="nslookup resolving kojo.lab" src="screenshots/09-nslookup-working.png" />
   <img width="49%" alt="Signed in as a domain user" src="screenshots/10-domain-user-login.png" />
 </p>
 
-## Help Desk Practice
+## Basic Account Management
 
-Once the domain was working, I practiced some common help desk tasks:
-
-- **Locked out / disabled accounts:** Unlocked and re-enabled user accounts in Active Directory.
-- **Forgot password:** Reset a user's password from Active Directory.
-- **New hire:** Created an account that stayed disabled until the user's start date, then enabled it.
-- **User changed roles:** Moved the user to the correct OU and removed group access they no longer needed.
-- **Renaming a computer:** Renamed the domain-joined PC and checked that its DNS records updated.
+I practiced resetting passwords and enabling and disabling user accounts in Active Directory.
 
 <p align="center">
   <img width="49%" alt="Disabled account message at login" src="screenshots/11-account-disabled.png" />
   <img width="49%" alt="Password reset in Active Directory" src="screenshots/12-password-reset.png" />
 </p>
 
-### Why the DNS Setting Matters
-
-To understand why domain computers need to use the domain controller for DNS, I tried changing the client's DNS to `8.8.8.8`. Group Policy stopped working because the client couldn't find the domain controller. Setting DNS back to `192.168.1.5` fixed it.
-
-<p align="center">
-  <img width="49%" alt="gpupdate failing with wrong DNS" src="screenshots/13-gpupdate-dns-failure.png" />
-  <img width="49%" alt="gpupdate working after fixing DNS" src="screenshots/14-gpupdate-fixed.png" />
-</p>
-
-### Delegating Password Resets
-
-I created a **Help Desk** group and gave it permission to reset passwords for users in the Employees OU only, without making them full admins.
-
-<p align="center">
-  <img width="60%" alt="Delegation of Control Wizard" src="screenshots/15-delegation-wizard.png" />
-</p>
-
 ## What I Learned
 
-- A domain controller should have a static IP, and a `169.254` address means the computer didn't get an address from DHCP.
-- Domain computers need to use the domain controller for DNS.
-- OUs organize accounts, while groups control what people can access.
-- When someone changes roles, their old access needs to be removed too.
-- It's better to give permissions to groups instead of individual users.
+- How a domain controller, DNS, and domain-joined computers work together
+- Why a domain controller needs a static IP
+- Why domain computers need to use the domain controller for DNS
+- How OUs, users, and groups are used to organize accounts
 
 ## Skills Practiced
 
-Active Directory, DNS, OUs, users and groups, password resets, account management, static IP addressing, Hyper-V, `ipconfig`, `nslookup`, `ping`, `gpupdate`, `whoami`
-
-## Next Steps
-
-- Group Policy and shared folder permissions
-- DHCP
-- A help desk ticketing system connected to the domain
+Active Directory, DNS, users and groups, OUs, password resets, static IP addressing, Hyper-V, `nslookup`, `whoami`
 
 ---
 

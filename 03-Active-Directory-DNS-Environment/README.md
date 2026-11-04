@@ -83,13 +83,7 @@ These are some of the most common help desk tasks. Password resets happen when s
 
 ## Skills Practiced
 
-- **Active Directory:** setting up a domain controller, creating a new domain, and managing users, security groups, and Organizational Units (OUs)
-- **Account management:** creating user accounts, resetting passwords, and enabling and disabling accounts
-- **DNS:** how computers find each other and the domain controller by name, and forward lookup zones
-- **Domain join:** connecting a Windows 11 computer to a domain and signing in with a domain account
-- **Networking basics:** static IP addressing and pointing computers to the right DNS server
-- **Windows Server 2025** and **Windows 11**
-- **Hyper-V:** creating virtual machines and an isolated virtual network
+Active Directory, DNS, domain controllers, users and groups, security groups, Organizational Units (OUs), account management, password resets, domain join, static IP addressing, Windows Server 2025, Windows 11, Hyper-V, virtual machines, virtual networking
 
 ---
 

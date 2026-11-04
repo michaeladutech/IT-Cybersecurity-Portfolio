@@ -44,7 +44,7 @@ Groups are used to control access. Instead of giving permissions to each person 
 
 DNS was set up along with the domain controller.
 
-DNS works like a phone book: it turns names into IP addresses. When a computer wants to reach `kojo.lab`, it asks DNS for the IP address and then connects to it.
+DNS turns names into IP addresses. When a computer wants to reach `kojo.lab`, it asks DNS for the IP address and then connects to it.
 
 That's why domain computers need to use the domain controller for DNS. It's the DNS server that knows where `kojo.lab` is. The screenshot shows each computer's name matched to its IP address.
 

@@ -1,4 +1,4 @@
-# Project 1: My Custom Pc Build 
+# Project 1: My Custom Pc
 
 My interest in building a custom PC started because I was dissatisfied with console gaming and wanted more performance, flexibility, and a better overall experience.
 
@@ -9,7 +9,7 @@ I also decided to go big with my first build and choose higher-end components th
 In 2023, I completed the build successfully. Since then, I have continued upgrading, maintaining, and troubleshooting the system, which has helped me gain hands-on experience with computer hardware, cooling, system configuration, performance, and problem-solving.
 
 <p align="center">
-  <img width="49%" alt="Original PC Build" src="https://github.com/user-attachments/assets/7b27f50d-fe16-443a-9dbd-58c4b690e003" />
+  <img width="60%" alt="Original PC Build" src="https://github.com/user-attachments/assets/7b27f50d-fe16-443a-9dbd-58c4b690e003" />
 </p>
 
 <p align="center">
@@ -75,7 +75,7 @@ The goal was to find a stable overclock that improved performance without introd
 This gave me hands-on experience with GPU performance tuning, thermal monitoring, stability testing, power limits, and understanding the relationship between clock speed, power consumption, temperature, and system stability.
 
 <p align="center">
-  <img width="500" alt="RTX 4080 FE Overclock Settings" src="https://github.com/user-attachments/assets/cb2d0b8b-ef1f-4761-8086-1e3b67d1e0a4" />
+  <img width="60%" alt="RTX 4080 FE Overclock Settings" src="https://github.com/user-attachments/assets/cb2d0b8b-ef1f-4761-8086-1e3b67d1e0a4" />
 </p>
 
 <p align="center">

@@ -20,7 +20,7 @@ For this project, I built a small Windows domain on my own PC using Hyper-V to l
 
 I gave the server a static IP, installed the Active Directory Domain Services and DNS roles, and promoted it to a domain controller for `kojo.lab`.
 
-In a company, the domain controller is the central place where all user accounts and computers are managed, so people can sign in to any work computer with the same account.
+In a company, the domain controller is the central place where all user accounts and computers are managed. Instead of creating a separate account on every computer, IT creates one account in Active Directory, and the employee can use it to sign in to any computer on the domain. The domain controller checks the username and password each time someone signs in. That's also why it needs a static IP: every computer on the network needs to be able to find it at the same address.
 
 <p align="center">
   <img width="49%" alt="Server roles installed" src="screenshots/03-server-roles.png" />
@@ -31,7 +31,9 @@ In a company, the domain controller is the central place where all user accounts
 
 I created Organizational Units (OUs) to organize accounts, then added users and security groups.
 
-Companies use OUs to organize accounts by department, and groups to control access. For example, giving everyone in a Managers group access to the same files instead of setting it up one person at a time.
+OUs work like folders. Companies use them to organize accounts, for example by department, which makes accounts easier to find and manage.
+
+Groups are used to control access. Instead of giving permissions to each person one at a time, IT gives permissions to a group, like Managers, and adds people to it. When someone joins or leaves a team, IT just adds them to or removes them from the group.
 
 <p align="center">
   <img width="49%" alt="OU structure in Active Directory Users and Computers" src="screenshots/05-ou-structure.png" />
@@ -42,7 +44,9 @@ Companies use OUs to organize accounts by department, and groups to control acce
 
 DNS was set up along with the domain controller.
 
-DNS turns names into IP addresses. In a domain, computers use it to find the domain controller, which is why each computer's DNS needs to point to it.
+DNS turns names into IP addresses. When a computer needs to reach something by name, like `google.com` or `kojo.lab`, it asks a DNS server for the IP address and then connects to that IP.
+
+In a domain, computers use DNS to find the domain controller. That's why each computer's DNS needs to point to the domain controller. A public DNS server, like Google's, wouldn't know anything about `kojo.lab`. The screenshot shows the records that match each computer's name to its IP address.
 
 <p align="center">
   <img width="60%" alt="DNS forward lookup zone" src="screenshots/07-dns-forward-zone.png" />
@@ -52,7 +56,7 @@ DNS turns names into IP addresses. In a domain, computers use it to find the dom
 
 I pointed the Windows 11 VM's DNS to the domain controller, tested it with `nslookup`, joined it to `kojo.lab`, and signed in as a domain user.
 
-This is what IT does when setting up a new work computer, so the employee can sign in with their company account.
+Joining a computer to the domain connects it to Active Directory, so IT can manage it and employees can sign in with their company account instead of a local one. Before joining, the computer needs to be able to find the domain controller, which is why I checked DNS with `nslookup` first. This is part of what IT does when setting up a new work computer.
 
 <p align="center">
   <img width="49%" alt="nslookup resolving kojo.lab" src="screenshots/09-nslookup-working.png" />
@@ -63,7 +67,7 @@ This is what IT does when setting up a new work computer, so the employee can si
 
 I practiced resetting passwords and enabling and disabling user accounts in Active Directory.
 
-These are some of the most common help desk tasks, like when someone forgets their password, a new employee starts, or someone leaves the company.
+These are some of the most common help desk tasks. Password resets happen when someone forgets their password or gets locked out. Accounts are disabled when an employee leaves, so they can no longer sign in, and new employees' accounts are enabled when they start.
 
 <p align="center">
   <img width="49%" alt="Disabled account message at login" src="screenshots/11-account-disabled.png" />

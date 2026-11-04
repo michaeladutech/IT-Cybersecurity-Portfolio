@@ -15,7 +15,7 @@ My goal with this portfolio is to turn that interest into practical experience a
 |---|---|---|
 | 1 | [My Custom PC Build](01-Custom-PC-Build/) | Custom water-cooled PC build, upgrades, and hardware troubleshooting (CPU RMA, SSD, PSU cable, networking) |
 | 2 | [Personal Homelab](02-Homelab/) | *Coming Soon* |
-| 3 | [Virtualization Environment — Active Directory & DNS Lab](03-Virtualization-Environment/) | Active Directory and DNS fundamentals: domain controller, users and groups, and joining a computer to the domain |
+| 3 | [Active Directory & DNS Lab](03-Active-Directory-DNS-Lab/) | Active Directory and DNS fundamentals: domain controller, users and groups, and joining a computer to the domain |
 
 # Contact
 

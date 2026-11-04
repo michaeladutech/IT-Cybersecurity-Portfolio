@@ -83,7 +83,7 @@ These are some of the most common help desk tasks. Password resets happen when s
 
 ## Skills Practiced
 
-Active Directory, DNS, users and groups, OUs, password resets, static IP addressing, Hyper-V, `nslookup`, `whoami`
+Active Directory, DNS, users and groups, OUs, password resets, static IP addressing, Hyper-V
 
 ---
 

@@ -44,9 +44,9 @@ Groups are used to control access. Instead of giving permissions to each person 
 
 DNS was set up along with the domain controller.
 
-DNS turns names into IP addresses. When a computer needs to reach something by name, like `google.com` or `kojo.lab`, it asks a DNS server for the IP address and then connects to that IP.
+DNS works like a phone book: it turns names into IP addresses. When a computer wants to reach `kojo.lab`, it asks DNS for the IP address and then connects to it.
 
-In a domain, computers use DNS to find the domain controller. That's why each computer's DNS needs to point to the domain controller. A public DNS server, like Google's, wouldn't know anything about `kojo.lab`. The screenshot shows the records that match each computer's name to its IP address.
+That's why domain computers need to use the domain controller for DNS. It's the DNS server that knows where `kojo.lab` is. The screenshot shows each computer's name matched to its IP address.
 
 <p align="center">
   <img width="60%" alt="DNS forward lookup zone" src="screenshots/07-dns-forward-zone.png" />

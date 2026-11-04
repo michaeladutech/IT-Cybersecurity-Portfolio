@@ -2,7 +2,7 @@
 
 ### *Coming Soon*
 
-This project is planned and will be documented here once I start working on it.
+I'm planning a homelab to keep building my networking and cybersecurity skills. I'll start building and documenting it once I have the hardware.
 
 ---
 

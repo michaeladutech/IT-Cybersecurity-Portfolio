@@ -27,7 +27,7 @@ I created a private virtual switch in Hyper-V so the lab VMs could talk to each 
   <img width="60%" alt="Private virtual switch in Hyper-V" src="screenshots/01-private-switch.png" />
 </p>
 
-After moving the server onto the private switch, it showed a `169.254.x.x` address. That happens when a computer is set to get an IP automatically but there's no DHCP server to give it one. Since a domain controller needs an address that never changes, I gave it a static IP of `192.168.1.5`.
+On the private switch, the server first got a `169.254.x.x` address because there was no DHCP server to give it one. Domain controllers should have an address that doesn't change, so I gave it a static IP of `192.168.1.5`.
 
 <p align="center">
   <img width="60%" alt="DC01 with a 169.254 APIPA address" src="screenshots/02-dc01-apipa-address.png" />
@@ -71,22 +71,22 @@ On the Windows 11 VM, I set a static IP and pointed its DNS to the domain contro
 
 ## Help Desk Practice
 
-Once the domain was working, I practiced common help desk tickets:
+Once the domain was working, I practiced some common help desk tasks:
 
 - **Locked out / disabled accounts:** Unlocked and re-enabled user accounts in Active Directory.
 - **Forgot password:** Reset a user's password from Active Directory.
 - **New hire:** Created an account that stayed disabled until the user's start date, then enabled it.
 - **User changed roles:** Moved the user to the correct OU and removed group access they no longer needed.
-- **Computer renamed / DNS record missing:** Confirmed DNS updated after renaming the PC, and used `ipconfig /registerdns` to bring back a deleted record.
+- **Renaming a computer:** Renamed the domain-joined PC and checked that its DNS records updated.
 
 <p align="center">
   <img width="49%" alt="Disabled account message at login" src="screenshots/11-account-disabled.png" />
   <img width="49%" alt="Password reset in Active Directory" src="screenshots/12-password-reset.png" />
 </p>
 
-### Troubleshooting a DNS Problem
+### Why the DNS Setting Matters
 
-I changed the client's DNS to `8.8.8.8` to see what would break. The user could still sign in, but Group Policy failed with name resolution errors because the client couldn't find the domain controller. After pointing DNS back to `192.168.1.5`, everything worked again.
+To understand why domain computers need to use the domain controller for DNS, I tried changing the client's DNS to `8.8.8.8`. Group Policy stopped working because the client couldn't find the domain controller. Setting DNS back to `192.168.1.5` fixed it.
 
 <p align="center">
   <img width="49%" alt="gpupdate failing with wrong DNS" src="screenshots/13-gpupdate-dns-failure.png" />
@@ -103,8 +103,8 @@ I created a **Help Desk** group and gave it permission to reset passwords for us
 
 ## What I Learned
 
-- A domain controller needs a static IP, and a `169.254` address means DHCP isn't working.
-- Domain computers need to use the domain controller for DNS, or a lot of things quietly stop working.
+- A domain controller should have a static IP, and a `169.254` address means the computer didn't get an address from DHCP.
+- Domain computers need to use the domain controller for DNS.
 - OUs organize accounts, while groups control what people can access.
 - When someone changes roles, their old access needs to be removed too.
 - It's better to give permissions to groups instead of individual users.

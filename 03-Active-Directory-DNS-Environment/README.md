@@ -1,6 +1,6 @@
 # Project 3: Active Directory & DNS Environment
 
-For this project, I built a small Windows domain on my own PC using Hyper-V to learn the fundamentals of Active Directory and DNS, and how companies use them to manage users and computers.
+This project is a small Windows domain built in Hyper-V on my own PC. Its purpose was to learn the fundamentals of Active Directory and DNS, and how organizations use them to manage users and computers.
 
 ## Lab Setup
 
@@ -10,21 +10,21 @@ For this project, I built a small Windows domain on my own PC using Hyper-V to l
 | Domain Controller | `DC01` — Windows Server 2025 (192.168.1.5) |
 | Client | `WIN11-01` — Windows 11 Pro (192.168.1.101) |
 | Domain | `kojo.lab` |
-| Network | Private virtual switch, separate from my home network |
+| Network | Private virtual switch, isolated from my home network |
 
 <p align="center">
   <img width="60%" alt="Private virtual switch in Hyper-V" src="screenshots/01-private-switch.png" />
 </p>
 
 <p align="center">
-  <em>Private virtual switch used to keep the lab separate from my home network.</em>
+  <em>Private virtual switch used to isolate the lab from my home network.</em>
 </p>
 
 ## Setting Up the Domain
 
-I gave the server a static IP, installed the Active Directory Domain Services and DNS roles, and promoted it to a domain controller for `kojo.lab`.
+I assigned the server a static IP address, installed the Active Directory Domain Services (AD DS) and DNS roles, and promoted it to a domain controller for `kojo.lab`.
 
-In a company, the domain controller is the central place where all user accounts and computers are managed. Instead of creating a separate account on every computer, IT creates one account in Active Directory, and the employee can use it to sign in to any computer on the domain. The domain controller checks the username and password each time someone signs in. That's also why it needs a static IP: every computer on the network needs to be able to find it at the same address.
+In an organization, the domain controller is the central point for managing user accounts and computers. Rather than creating a separate account on every computer, IT creates one account in Active Directory that the employee can use to sign in to any computer on the domain. The domain controller authenticates each sign-in. It requires a static IP address so every computer on the network can reliably locate it.
 
 <p align="center">
   <img width="49%" alt="Server roles installed" src="screenshots/03-server-roles.png" />
@@ -37,11 +37,11 @@ In a company, the domain controller is the central place where all user accounts
 
 ## Users, Groups, and OUs
 
-I created Organizational Units (OUs) to organize accounts, then added users and security groups.
+I created Organizational Units (OUs) to structure the directory, then added user accounts and security groups.
 
-OUs work like folders. Companies use them to organize accounts, for example by department, which makes accounts easier to find and manage.
+OUs function like folders. Organizations use them to group accounts, often by department, which simplifies management and allows policies to be applied to specific groups of users.
 
-Groups are used to control access. Instead of giving permissions to each person one at a time, IT gives permissions to a group, like Managers, and adds people to it. When someone joins or leaves a team, IT just adds them to or removes them from the group.
+Security groups are used to control access. Instead of assigning permissions to individual users, IT assigns them to a group, such as Managers, and manages access through group membership. When someone joins or leaves a team, IT adds or removes them from the group.
 
 <p align="center">
   <img width="49%" alt="OU structure in Active Directory Users and Computers" src="screenshots/05-ou-structure.png" />
@@ -54,11 +54,11 @@ Groups are used to control access. Instead of giving permissions to each person 
 
 ## DNS
 
-DNS was set up along with the domain controller.
+DNS was configured as part of the domain controller setup.
 
-DNS turns names into IP addresses. When a computer wants to reach `kojo.lab`, it asks DNS for the IP address and then connects to it.
+DNS resolves names to IP addresses. When a computer needs to reach `kojo.lab`, it queries DNS for the IP address and then connects to it.
 
-That's why domain computers need to use the domain controller for DNS. It's the DNS server that knows where `kojo.lab` is. The screenshot shows each computer's name matched to its IP address.
+For this reason, domain-joined computers must use the domain controller as their DNS server, since it holds the records for `kojo.lab`. The forward lookup zone below shows each computer's name mapped to its IP address.
 
 <p align="center">
   <img width="60%" alt="DNS forward lookup zone" src="screenshots/07-dns-forward-zone.png" />
@@ -70,9 +70,9 @@ That's why domain computers need to use the domain controller for DNS. It's the 
 
 ## Joining a Computer to the Domain
 
-I pointed the Windows 11 VM's DNS to the domain controller, tested it with `nslookup`, joined it to `kojo.lab`, and signed in as a domain user.
+I configured the Windows 11 VM to use the domain controller for DNS, verified name resolution with `nslookup`, joined it to `kojo.lab`, and signed in with a domain account.
 
-Joining a computer to the domain connects it to Active Directory, so IT can manage it and employees can sign in with their company account instead of a local one. Before joining, the computer needs to be able to find the domain controller, which is why I checked DNS with `nslookup` first. This is part of what IT does when setting up a new work computer.
+Joining a computer to the domain connects it to Active Directory, allowing IT to manage it centrally and employees to sign in with their organization account instead of a local one. The computer must be able to locate the domain controller before joining, so DNS was verified first. This is a standard step when setting up a new workstation.
 
 <p align="center">
   <img width="49%" alt="nslookup resolving kojo.lab" src="screenshots/09-nslookup-working.png" />
@@ -80,14 +80,14 @@ Joining a computer to the domain connects it to Active Directory, so IT can mana
 </p>
 
 <p align="center">
-  <em>The client finding kojo.lab with nslookup, and signed in as a domain user.</em>
+  <em>The client resolving kojo.lab with nslookup, and signed in as a domain user.</em>
 </p>
 
 ## Basic Account Management
 
-I practiced resetting passwords and enabling and disabling user accounts in Active Directory.
+I performed password resets and enabled and disabled user accounts in Active Directory.
 
-These are some of the most common help desk tasks. Password resets happen when someone forgets their password or gets locked out. Accounts are disabled when an employee leaves, so they can no longer sign in, and new employees' accounts are enabled when they start.
+These are among the most common help desk tasks. Password resets are needed when a user forgets their password or is locked out. Accounts are disabled when an employee leaves to prevent further access, and enabled when a new employee starts.
 
 <p align="center">
   <img width="49%" alt="Disabled account message at login" src="screenshots/11-account-disabled.png" />
@@ -100,9 +100,9 @@ These are some of the most common help desk tasks. Password resets happen when s
 
 ## Help Desk Access with RSAT
 
-I gave a Help Desk group permission to reset passwords for users in the Employees OU only. Then I installed RSAT (Remote Server Administration Tools) on the Windows 11 client so the Help Desk account could open Active Directory Users and Computers from that computer.
+I delegated password-reset permissions to a Help Desk group for users in the Employees OU only, and installed RSAT (Remote Server Administration Tools) on the Windows 11 client so the Help Desk account could manage Active Directory from that computer.
 
-In a company, help desk techs don't sign in to the domain controller. They manage accounts from their own computer with RSAT, and they only get the permissions they need for their job. This is called least privilege.
+In an organization, help desk technicians do not sign in to the domain controller directly. They manage accounts from their own workstation using RSAT, with only the permissions their role requires. This is the principle of least privilege.
 
 <p align="center">
   <img width="60%" alt="Help Desk group given Reset password on the Employees OU" src="screenshots/13-helpdesk-permissions.png" />
@@ -112,7 +112,7 @@ In a company, help desk techs don't sign in to the domain controller. They manag
   <em>The Help Desk group's Reset password permission on the Employees OU.</em>
 </p>
 
-Signed in as the Help Desk account, I was able to reset a password for a user in Employees. Resetting a password for a user in Management was denied, because that permission wasn't given.
+Testing as the Help Desk account confirmed the delegation: a password reset for a user in Employees succeeded, while a reset for a user in Management was denied.
 
 <p align="center">
   <img width="49%" alt="Help Desk account resetting a password in the Employees OU" src="screenshots/14-helpdesk-reset-allowed.png" />
@@ -125,9 +125,9 @@ Signed in as the Help Desk account, I was able to reset a password for a user in
 
 ## Group Policy
 
-I created a Group Policy Object (GPO) that blocks Control Panel and Settings, and linked it to the Employees OU.
+I created a Group Policy Object (GPO) that restricts access to Control Panel and Settings, and linked it to the Employees OU.
 
-Companies use Group Policy to apply the same settings to many users or computers at once, like blocking certain settings, mapping drives, or setting a desktop wallpaper. A GPO applies to the OU it's linked to, so only users in Employees get this setting.
+Organizations use Group Policy to apply consistent settings across many users or computers at once, such as restricting settings, mapping drives, or setting a desktop wallpaper. A GPO applies to the OU it is linked to, so only users in Employees receive this restriction.
 
 <p align="center">
   <img width="49%" alt="GPO linked to the Employees OU" src="screenshots/17-gpo-linked.png" />
@@ -138,7 +138,7 @@ Companies use Group Policy to apply the same settings to many users or computers
   <em>The GPO linked to the Employees OU, and the Control Panel setting enabled.</em>
 </p>
 
-I signed in as a user in Employees, ran `gpupdate /force`, and Control Panel was blocked. `gpresult /r` showed the GPO was applied. A user outside Employees could still open Control Panel and Settings.
+To verify the policy, I signed in as a user in Employees and ran `gpupdate /force`. Control Panel was blocked, and `gpresult /r` confirmed the GPO was applied. A user outside the Employees OU could still open Control Panel and Settings.
 
 <p align="center">
   <img width="49%" alt="Control Panel blocked for an Employees user" src="screenshots/19-control-panel-blocked.png" />
@@ -154,7 +154,7 @@ I signed in as a user in Employees, ran `gpupdate /force`, and Control Panel was
 </p>
 
 <p align="center">
-  <em>A user outside the Employees OU isn't affected.</em>
+  <em>A user outside the Employees OU is not affected.</em>
 </p>
 
 ## What I Learned
@@ -163,8 +163,8 @@ I signed in as a user in Employees, ran `gpupdate /force`, and Control Panel was
 - Why a domain controller needs a static IP
 - Why domain computers need to use the domain controller for DNS
 - How OUs, users, and groups are used to organize accounts
-- How least privilege works when giving the help desk only the permissions it needs
-- That a GPO applies based on which OU a user is in, not which groups they're in
+- How least privilege limits the help desk to only the permissions its role requires
+- That a GPO applies based on a user's OU, not their group membership
 
 ## Skills Practiced
 

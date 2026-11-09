@@ -98,17 +98,73 @@ These are some of the most common help desk tasks. Password resets happen when s
   <em>A disabled account at sign-in, and a password reset in Active Directory.</em>
 </p>
 
+## Help Desk Access with RSAT
+
+I gave a Help Desk group permission to reset passwords for users in the Employees OU only. Then I installed RSAT (Remote Server Administration Tools) on the Windows 11 client so the Help Desk account could open Active Directory Users and Computers from that computer.
+
+In a company, help desk techs don't sign in to the domain controller. They manage accounts from their own computer with RSAT, and they only get the permissions they need for their job. This is called least privilege.
+
+Signed in as the Help Desk account, I was able to reset a password for a user in Employees, but I couldn't add a user to the Managers group because that permission wasn't given.
+
+<p align="center">
+  <img width="49%" alt="Help Desk account resetting a password in the Employees OU" src="screenshots/14-helpdesk-reset-allowed.png" />
+  <img width="49%" alt="Help Desk account denied when changing group membership" src="screenshots/15-helpdesk-group-denied.png" />
+</p>
+
+<p align="center">
+  <em>The Help Desk account resetting an employee's password, and being denied when changing a group.</em>
+</p>
+
+## Group Policy
+
+I created a Group Policy Object (GPO) that blocks Control Panel and Settings, and linked it to the Employees OU.
+
+Companies use Group Policy to apply the same settings to many users or computers at once, like blocking certain settings, mapping drives, or setting a desktop wallpaper. A GPO applies to the OU it's linked to, so only users in Employees get this setting.
+
+<p align="center">
+  <img width="49%" alt="GPO linked to the Employees OU" src="screenshots/16-gpo-linked.png" />
+  <img width="49%" alt="Prohibit access to Control Panel and PC settings enabled" src="screenshots/17-gpo-setting.png" />
+</p>
+
+<p align="center">
+  <em>The GPO linked to the Employees OU, and the Control Panel setting enabled.</em>
+</p>
+
+I signed in as a user in Employees, ran `gpupdate /force`, and Control Panel was blocked. `gpresult /r` showed the GPO was applied. A user outside Employees could still open Control Panel and Settings.
+
+<p align="center">
+  <img width="49%" alt="Control Panel blocked for an Employees user" src="screenshots/18-control-panel-blocked.png" />
+  <img width="49%" alt="gpresult showing the Block Control Panel GPO applied" src="screenshots/19-gpresult.png" />
+</p>
+
+<p align="center">
+  <em>Control Panel blocked for an Employees user, and gpresult showing the GPO applied.</em>
+</p>
+
+<p align="center">
+  <img width="60%" alt="A user outside Employees can still open Control Panel and Settings" src="screenshots/20-other-user-not-blocked.png" />
+</p>
+
+<p align="center">
+  <em>A user outside the Employees OU isn't affected.</em>
+</p>
+
 ## What I Learned
 
 - How a domain controller, DNS, and domain-joined computers work together
 - Why a domain controller needs a static IP
 - Why domain computers need to use the domain controller for DNS
 - How OUs, users, and groups are used to organize accounts
+- How least privilege works when giving the help desk only the permissions it needs
+- That a GPO applies based on which OU a user is in, not which groups they're in
 
 ## Skills Practiced
 
 - **Active Directory:** setting up a domain controller, creating a new domain, and organizing accounts with Organizational Units (OUs) and security groups
 - **Account management:** creating user accounts, resetting passwords, and enabling and disabling accounts
+- **Delegation and least privilege:** giving a Help Desk group password-reset rights on one OU only
+- **RSAT:** managing Active Directory from a Windows 11 client instead of the server
+- **Group Policy:** creating and linking a GPO to an OU, and checking it with `gpupdate` and `gpresult`
 - **DNS:** how computers find each other and the domain controller by name, and forward lookup zones
 - **Domain join:** connecting a Windows 11 computer to a domain and signing in with a domain account
 - **Networking basics:** static IP addressing and pointing computers to the right DNS server

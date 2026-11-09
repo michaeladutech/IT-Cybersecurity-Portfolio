@@ -105,7 +105,7 @@ I gave a Help Desk group permission to reset passwords for users in the Employee
 In a company, help desk techs don't sign in to the domain controller. They manage accounts from their own computer with RSAT, and they only get the permissions they need for their job. This is called least privilege.
 
 <p align="center">
-  <img width="60%" alt="Help Desk group given Reset password on the Employees OU" src="screenshots/13-helpdesk-delegation.png" />
+  <img width="60%" alt="Help Desk group given Reset password on the Employees OU" src="screenshots/13-helpdesk-permissions.png" />
 </p>
 
 <p align="center">

@@ -104,15 +104,31 @@ I gave a Help Desk group permission to reset passwords for users in the Employee
 
 In a company, help desk techs don't sign in to the domain controller. They manage accounts from their own computer with RSAT, and they only get the permissions they need for their job. This is called least privilege.
 
-Signed in as the Help Desk account, I was able to reset a password for a user in Employees, but I couldn't add a user to the Managers group because that permission wasn't given.
-
 <p align="center">
-  <img width="49%" alt="Help Desk account resetting a password in the Employees OU" src="screenshots/14-helpdesk-reset-allowed.png" />
-  <img width="49%" alt="Help Desk account denied when changing group membership" src="screenshots/15-helpdesk-group-denied.png" />
+  <img width="80%" alt="Help Desk group given Reset password on the Employees OU" src="screenshots/13-helpdesk-delegation.png" />
 </p>
 
 <p align="center">
-  <em>The Help Desk account resetting an employee's password, and being denied when changing a group.</em>
+  <em>The Help Desk group's Reset password permission on the Employees OU.</em>
+</p>
+
+Signed in as the Help Desk account, I was able to reset a password for a user in Employees. Resetting a password for a user in Management was denied, and so was adding a user to the Managers group, because those permissions weren't given.
+
+<p align="center">
+  <img width="49%" alt="Help Desk account resetting a password in the Employees OU" src="screenshots/14-helpdesk-reset-allowed.png" />
+  <img width="49%" alt="Help Desk account denied resetting a password in the Management OU" src="screenshots/15-helpdesk-reset-denied.png" />
+</p>
+
+<p align="center">
+  <em>A password reset allowed in Employees and denied in Management.</em>
+</p>
+
+<p align="center">
+  <img width="60%" alt="Help Desk account denied when changing group membership" src="screenshots/16-helpdesk-group-denied.png" />
+</p>
+
+<p align="center">
+  <em>The Help Desk account denied when adding a user to the Managers group.</em>
 </p>
 
 ## Group Policy
@@ -122,8 +138,8 @@ I created a Group Policy Object (GPO) that blocks Control Panel and Settings, an
 Companies use Group Policy to apply the same settings to many users or computers at once, like blocking certain settings, mapping drives, or setting a desktop wallpaper. A GPO applies to the OU it's linked to, so only users in Employees get this setting.
 
 <p align="center">
-  <img width="49%" alt="GPO linked to the Employees OU" src="screenshots/16-gpo-linked.png" />
-  <img width="49%" alt="Prohibit access to Control Panel and PC settings enabled" src="screenshots/17-gpo-setting.png" />
+  <img width="49%" alt="GPO linked to the Employees OU" src="screenshots/17-gpo-linked.png" />
+  <img width="49%" alt="Prohibit access to Control Panel and PC settings enabled" src="screenshots/18-gpo-setting.png" />
 </p>
 
 <p align="center">
@@ -133,8 +149,8 @@ Companies use Group Policy to apply the same settings to many users or computers
 I signed in as a user in Employees, ran `gpupdate /force`, and Control Panel was blocked. `gpresult /r` showed the GPO was applied. A user outside Employees could still open Control Panel and Settings.
 
 <p align="center">
-  <img width="49%" alt="Control Panel blocked for an Employees user" src="screenshots/18-control-panel-blocked.png" />
-  <img width="49%" alt="gpresult showing the Block Control Panel GPO applied" src="screenshots/19-gpresult.png" />
+  <img width="49%" alt="Control Panel blocked for an Employees user" src="screenshots/19-control-panel-blocked.png" />
+  <img width="49%" alt="gpresult showing the Block Control Panel GPO applied" src="screenshots/20-gpresult.png" />
 </p>
 
 <p align="center">
@@ -142,7 +158,7 @@ I signed in as a user in Employees, ran `gpupdate /force`, and Control Panel was
 </p>
 
 <p align="center">
-  <img width="60%" alt="A user outside Employees can still open Control Panel and Settings" src="screenshots/20-other-user-not-blocked.png" />
+  <img width="60%" alt="A user outside Employees can still open Control Panel and Settings" src="screenshots/21-other-user-not-blocked.png" />
 </p>
 
 <p align="center">

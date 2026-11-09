@@ -112,7 +112,7 @@ In a company, help desk techs don't sign in to the domain controller. They manag
   <em>The Help Desk group's Reset password permission on the Employees OU.</em>
 </p>
 
-Signed in as the Help Desk account, I was able to reset a password for a user in Employees. Resetting a password for a user in Management was denied, and so was adding a user to the Managers group, because those permissions weren't given.
+Signed in as the Help Desk account, I was able to reset a password for a user in Employees. Resetting a password for a user in Management was denied, because that permission wasn't given.
 
 <p align="center">
   <img width="49%" alt="Help Desk account resetting a password in the Employees OU" src="screenshots/14-helpdesk-reset-allowed.png" />
@@ -121,14 +121,6 @@ Signed in as the Help Desk account, I was able to reset a password for a user in
 
 <p align="center">
   <em>A password reset allowed in Employees and denied in Management.</em>
-</p>
-
-<p align="center">
-  <img width="60%" alt="Help Desk account denied when changing group membership" src="screenshots/16-helpdesk-group-denied.png" />
-</p>
-
-<p align="center">
-  <em>The Help Desk account denied when adding a user to the Managers group.</em>
 </p>
 
 ## Group Policy
